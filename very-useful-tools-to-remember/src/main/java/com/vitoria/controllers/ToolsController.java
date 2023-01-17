@@ -2,6 +2,7 @@ package com.vitoria.controllers;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,13 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vitoria.models.Tools;
 import com.vitoria.repositories.ToolsRepository;
 
 @RestController
-@RequestMapping("/tools")
+@RequestMapping("tools")
 public class ToolsController {
 	@Autowired
 	private ToolsRepository repo;
@@ -36,7 +38,7 @@ public class ToolsController {
 		return ResponseEntity.ok().body(tool);
 	}
 	
-	@PostMapping("/save")
+	@PostMapping
 	public ResponseEntity<Tools> insert(@RequestBody Tools tool){
 		Tools entity=tool;
 		repo.save(entity);
@@ -61,7 +63,11 @@ public class ToolsController {
 		return ResponseEntity.ok().body(updatedTool);
 	}
 	
-	
+	@GetMapping("/testando")
+	public ResponseEntity<List<Tools>> findByTag(@RequestParam("tags") String tag){
+		 List<Tools> allTools=repo.findByTag(tag);
+		 return ResponseEntity.ok().body(allTools);	
+	}
 	
 	
 	
