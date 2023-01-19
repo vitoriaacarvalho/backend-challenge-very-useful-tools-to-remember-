@@ -4,10 +4,10 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.vitoria.models.User;
+import com.vitoria.models.Users;
 
-public interface UserRepository extends JpaRepository<User, Integer>{
+public interface UserRepository extends JpaRepository<Users, Integer>{
 	
-	public Optional<User> findByLogin(String login);
+	public Optional<Users> findByLogin(String login);
 
 }

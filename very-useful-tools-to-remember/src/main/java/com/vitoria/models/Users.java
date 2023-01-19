@@ -1,6 +1,8 @@
 package com.vitoria.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
-public class User implements Serializable{
+public class Users implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,16 +25,23 @@ public class User implements Serializable{
 	
 	private String password;
 
-	public User() {
+	private Collection<GrantedAuthority> listOfgrantedAuthorities = new ArrayList<>();
+	
+	public Users() {
 		super();
 	}
+	
+	
 
-	public User(Integer id, String login, String password) {
+	public Users(Integer id, String login, String password, Collection<GrantedAuthority> listOfgrantedAuthorities) {
 		super();
 		this.id = id;
 		this.login = login;
 		this.password = password;
+		this.listOfgrantedAuthorities = listOfgrantedAuthorities;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -54,5 +65,14 @@ public class User implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Collection<GrantedAuthority> getListOfgrantedAuthorities() {
+		return listOfgrantedAuthorities;
+	}
+	
+	public void setListOfgrantedAuthorities(Collection<GrantedAuthority> listOfgrantedAuthorities) {
+		this.listOfgrantedAuthorities = listOfgrantedAuthorities;
 	}	
+	
 }
