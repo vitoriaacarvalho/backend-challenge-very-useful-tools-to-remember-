@@ -1,19 +1,19 @@
 package com.vitoria.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
 
 @Entity
+@Table(name="users_table")
 public class Users implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,26 +23,24 @@ public class Users implements Serializable{
 	@Column(unique=true)
 	private String login;
 	
+	@Column(unique=true)
+	private String email; 
+	
 	private String password;
 
-	private Collection<GrantedAuthority> listOfgrantedAuthorities = new ArrayList<>();
+	private String role; 
 	
 	public Users() {
-		super();
 	}
 	
-	
-
-	public Users(Integer id, String login, String password, Collection<GrantedAuthority> listOfgrantedAuthorities) {
-		super();
+	public Users(Integer id, String login, String email, String password, String role) {
 		this.id = id;
 		this.login = login;
+		this.email = email;
 		this.password = password;
-		this.listOfgrantedAuthorities = listOfgrantedAuthorities;
+		this.role = role;
 	}
-
-
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -58,21 +56,33 @@ public class Users implements Serializable{
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getPassword() {
 		return password;
 	}
+	
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public Collection<GrantedAuthority> getListOfgrantedAuthorities() {
-		return listOfgrantedAuthorities;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
-	public void setListOfgrantedAuthorities(Collection<GrantedAuthority> listOfgrantedAuthorities) {
-		this.listOfgrantedAuthorities = listOfgrantedAuthorities;
-	}	
+	
 	
 }

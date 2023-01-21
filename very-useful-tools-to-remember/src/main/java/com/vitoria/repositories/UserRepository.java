@@ -9,5 +9,6 @@ import com.vitoria.models.Users;
 public interface UserRepository extends JpaRepository<Users, Integer>{
 	
 	public Optional<Users> findByLogin(String login);
-
+	public Optional<Users> findByEmail(String email);
+	
 }
