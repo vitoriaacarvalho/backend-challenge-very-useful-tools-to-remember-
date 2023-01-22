@@ -1,15 +1,5 @@
-DROP TABLE IF EXISTS `USERS_TABLE`;
-
-CREATE TABLE `USERS_TABLE` (
-	`ID` int AUTO_INCREMENT PRIMARY KEY,
-	`LOGIN` varchar(250) NOT NULL,
-	`EMAIL` varchar(250) NOT NULL,
-	`PASSWORD` varchar(250) NOT NULL,
-	`ROLE` varchar(250) NOT NULL
-);
+INSERT INTO `USERS_TABLE` ( `LOGIN`, `EMAIL`, `PASSWORD`,`ROLE`)
+VALUES ( 'teste', 'teste', '12345','ADMIN');
 
 INSERT INTO `USERS_TABLE` ( `LOGIN`, `EMAIL`, `PASSWORD`,`ROLE`)
-VALUES ( 'vitória', 'vitoria@gmail.com', '12345','ADMIN');
-
-INSERT INTO `USERS_TABLE` ( `LOGIN`, `EMAIL`, `PASSWORD`,`ROLE`)
-VALUES ( 'antonia', 'antonia@gmail.com', '12345','USER');
+VALUES ( 'testee', 'testee', '12345','USER');
