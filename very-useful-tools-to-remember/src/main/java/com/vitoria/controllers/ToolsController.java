@@ -2,10 +2,10 @@ package com.vitoria.controllers;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +25,7 @@ public class ToolsController {
 	@Autowired
 	private ToolsRepository repo;
 	
-	
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping
 	public ResponseEntity<List<Tools>> getAll(){
 		List<Tools> tools=repo.findAll();
