@@ -37,11 +37,8 @@ public class UserController {
 		return ResponseEntity.ok().body(users);
 	}
 	
-	@PostMapping
+	@PostMapping("/create")
 	public ResponseEntity<Users> insert(@RequestBody Users user){
-		if(repo.findByLogin(user.getLogin())!=null) {
-			throw new Error("this user already exists");
-		}
 		Users entity=repo.save(user);
 		return ResponseEntity.ok().body(entity);
 	}
@@ -50,6 +47,8 @@ public class UserController {
 	public Users role(@RequestBody CreateUserRoleDTO createUserRoleDTO) {
 		return createRoleUserService.execute(createUserRoleDTO);
 	}
+
+	
 	
 	@GetMapping("/emails")
 	public ResponseEntity<Optional<Users>> findByEmail(@RequestParam String email){

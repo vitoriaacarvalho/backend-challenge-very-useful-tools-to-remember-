@@ -1,7 +1,6 @@
 package com.vitoria.dto;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
@@ -10,33 +9,33 @@ import lombok.Data;
 @Data
 @Component
 public class CreateUserRoleDTO {
-	private UUID idUser;
+	private Integer idUser;
 	
-	private List<UUID> idsRoles;
+	private List<Integer> idsRoles;
 
 	public CreateUserRoleDTO() {
 		super();
 	}
 	
-	public CreateUserRoleDTO(UUID idUser, List<UUID> idsRoles) {
+	public CreateUserRoleDTO(Integer idUser, List<Integer> idsRoles) {
 		super();
 		this.idUser = idUser;
 		this.idsRoles = idsRoles;
 	}
 
-	public UUID getIdUser() {
+	public Integer getIdUser() {
 		return idUser;
 	}
 
-	public void setIdUser(UUID idUser) {
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
 
-	public List<UUID> getIdsRoles() {
+	public List<Integer> getIdsRoles() {
 		return idsRoles;
 	}
 
-	public void setIdsRoles(List<UUID> idsRoles) {
+	public void setIdsRoles(List<Integer> idsRoles) {
 		this.idsRoles = idsRoles;
 	}
 	

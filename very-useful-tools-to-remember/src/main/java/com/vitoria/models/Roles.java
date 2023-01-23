@@ -1,7 +1,5 @@
 package com.vitoria.models;
 
-import java.util.UUID;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,22 +13,21 @@ import org.hibernate.annotations.Type;
 public class Roles {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Type(type="uuid-char")
-	private UUID id;
+	private Integer id;
 	private String name;
 	
 	public Roles() {
 	}
 
-	public Roles(UUID id) {
+	public Roles(Integer id) {
 	    this.id = id;
 	}
 	
-	public UUID getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -2,7 +2,6 @@ package com.vitoria.models;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Type;
 
 
 @Entity
@@ -23,8 +20,7 @@ public class Users implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Type(type="uuid-char")
-	private UUID id;
+	private Integer id;
 	
 	@Column(unique=true)
 	private String login;
@@ -40,7 +36,7 @@ public class Users implements Serializable{
 	public Users() {
 	}
 	
-	public Users(UUID id, String login, String email, String password, List<Roles> role) {
+	public Users(Integer id, String login, String email, String password, List<Roles> role) {
 		this.id = id;
 		this.login = login;
 		this.email = email;
@@ -48,11 +44,11 @@ public class Users implements Serializable{
 		this.role = role;
 	}
 	
-	public UUID getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
