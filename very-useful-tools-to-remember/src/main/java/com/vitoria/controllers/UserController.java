@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.vitoria.dto.CreateUserRoleDTO;
 import com.vitoria.models.Users;
 import com.vitoria.repositories.UserRepository;
+import com.vitoria.services.CreateRoleUserService;
 
 @RestController
 @RequestMapping("/users")
@@ -26,6 +28,8 @@ public class UserController {
 	@Autowired
 	private UserRepository repo;
 	
+	@Autowired 
+	private CreateRoleUserService createRoleUserService;
 	
 	@GetMapping
 	public ResponseEntity<List<Users>> findAll(){
@@ -35,9 +39,16 @@ public class UserController {
 	
 	@PostMapping
 	public ResponseEntity<Users> insert(@RequestBody Users user){
-		//user.setPassword(encoder.getPasswordEncoder(user.getPassword()));
+		if(repo.findByLogin(user.getLogin())!=null) {
+			throw new Error("this user already exists");
+		}
 		Users entity=repo.save(user);
 		return ResponseEntity.ok().body(entity);
+	}
+	
+	@PostMapping("/create-role")
+	public Users role(@RequestBody CreateUserRoleDTO createUserRoleDTO) {
+		return createRoleUserService.execute(createUserRoleDTO);
 	}
 	
 	@GetMapping("/emails")

@@ -1,13 +1,18 @@
 package com.vitoria.models;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
 
 
 @Entity
@@ -18,7 +23,8 @@ public class Users implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	@Type(type="uuid-char")
+	private UUID id;
 	
 	@Column(unique=true)
 	private String login;
@@ -27,13 +33,14 @@ public class Users implements Serializable{
 	private String email; 
 	
 	private String password;
-
-	private String role; 
+	
+	@ManyToMany
+	private List<Roles> role; 
 	
 	public Users() {
 	}
 	
-	public Users(Integer id, String login, String email, String password, String role) {
+	public Users(UUID id, String login, String email, String password, List<Roles> role) {
 		this.id = id;
 		this.login = login;
 		this.email = email;
@@ -41,11 +48,11 @@ public class Users implements Serializable{
 		this.role = role;
 	}
 	
-	public Integer getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -75,11 +82,11 @@ public class Users implements Serializable{
 		this.password = password;
 	}
 
-	public String getRole() {
+	public List<Roles> getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(List<Roles> role) {
 		this.role = role;
 	}
 	
