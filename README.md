@@ -1,5 +1,5 @@
 # Installation 
-$ git clone https://github.com/vitoriaacarvalho/quero-ser-clickbus.git
+$ git clone https://github.com/vitoriaacarvalho/backend-challenge-very-useful-tools-to-remember-.git
 
 # Endpoints
   <h3>Inital endpoint: localhost:3000 [no content here]</h3>
