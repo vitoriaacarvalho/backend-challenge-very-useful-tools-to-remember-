@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository<Users, Integer>{
 	
 	public Optional<Users> findByLogin(String login);
 	public Optional<Users> findByEmail(String email);
-	@Query("SELECT u from Users u JOIN FETCH u.role where login = :username ")
+	@Query("SELECT u from Users u JOIN FETCH u.role where u.login = :username ")
 	Users findByUsernameFetchRoles(@Param("username") String username);
 
 }

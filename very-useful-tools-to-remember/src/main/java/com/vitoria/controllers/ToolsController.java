@@ -25,8 +25,8 @@ public class ToolsController {
 	@Autowired
 	private ToolsRepository repo;
 	
-	@PreAuthorize("hasRole('USER')")
-	@GetMapping
+
+	@GetMapping("/all-tools")
 	public ResponseEntity<List<Tools>> getAll(){
 		List<Tools> tools=repo.findAll();
 		return ResponseEntity.ok().body(tools);
@@ -63,7 +63,7 @@ public class ToolsController {
 		return ResponseEntity.ok().body(updatedTool);
 	}
 	
-	@GetMapping("/testando")
+	@GetMapping
 	public ResponseEntity<List<Tools>> findByTag(@RequestParam("tags") String tag){
 		 List<Tools> allTools=repo.findByTag(tag);
 		 return ResponseEntity.ok().body(allTools);	

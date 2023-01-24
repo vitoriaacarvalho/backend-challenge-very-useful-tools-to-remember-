@@ -23,15 +23,13 @@ public class UserPrincipal implements UserDetails{
 	}
 	
 	public UserPrincipal(Users user) {
-		this.login = login;
-		this.password = password;
-		this.authorities = authorities;
+		this.login = user.getLogin();
+		this.password =user.getPassword();
 		List<SimpleGrantedAuthority> authorities=new ArrayList<>();
 		List<Roles> roles=user.getRole();
 		for (Roles role : roles)
-		    authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
+		    authorities.add(new SimpleGrantedAuthority("ROLE_"+role));
 		this.authorities=authorities;
-		
 	}
 
 	
