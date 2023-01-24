@@ -10,7 +10,7 @@ $ git clone https://github.com/vitoriaacarvalho/quero-ser-clickbus.git
        <li><strong>Creating a tool (POST):</strong> initial endpoint + "/tools"</li>
        <li><strong>Editing a tool (PUT): </strong>initial endpoint + "/update/{id}" </li>
        <li><strong>Deleting a specific place (DELETE): </strong>initial endpoint + "/tools/delete/{id}"</li>
-       <li><strong>Filtering tools by TAGS (GET): </strong>initial endpoint + "/tool?tag={tag}"</li>
+       <li><strong>Filtering tools by TAGS (GET): </strong>initial endpoint + "/tool/filtering?tag={tag}"</li>
     </ul>
     
   # Testing environment
